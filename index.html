@@ -24,9 +24,6 @@ const PRESENTATION_CONFIG = {
     { name: "Live Demo",          layout: "demo",       title: "Demo \u2014 Live /fix-gus" },
     { name: "Create Your Own",    layout: "code",       title: "How to Create Your Own Skill" },
     { name: "Sharing",            layout: "cards",      title: "Sharing With Your Team" },
-    { name: "Skills vs Hooks",    layout: "comparison", title: "Skills vs Hooks vs MCP Servers" },
-    { name: "Best Practices",     layout: "bullets",    title: "Best Practices" },
-    { name: "Team Ideas",         layout: "title",      title: "Ideas for Our Team" },
   ],
   autoPlay: { enabled: false, interval: 8000 },
   slideCounter: { show: true, format: "numbered" },
@@ -970,82 +967,6 @@ Run tests with !<span class="str">`npm test`</span>
   </div>
 </section>
 
-<!-- ==================== SLIDE 7: Skills vs Hooks vs MCP Servers (comparison) ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Skills vs Hooks" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Compare</div>
-  <h2>Skills vs Hooks vs MCP Servers</h2>
-  <table class="comparison">
-    <tr>
-      <th></th>
-      <th class="col-sub">Skills</th>
-      <th class="col-team">Hooks</th>
-      <th>MCP Servers</th>
-    </tr>
-    <tr>
-      <td>What</td>
-      <td class="col-sub">Markdown playbooks</td>
-      <td class="col-team">Shell scripts on events</td>
-      <td>External tool APIs</td>
-    </tr>
-    <tr>
-      <td>Trigger</td>
-      <td class="col-sub">/command or auto</td>
-      <td class="col-team">Lifecycle events</td>
-      <td>Claude's decision</td>
-    </tr>
-    <tr>
-      <td>Control</td>
-      <td class="col-sub">Claude follows instructions</td>
-      <td class="col-team">Deterministic, always runs</td>
-      <td>Claude calls as needed</td>
-    </tr>
-    <tr>
-      <td>Use case</td>
-      <td class="col-sub">Multi-step workflows</td>
-      <td class="col-team">Format-on-save, validation</td>
-      <td>Slack, GitHub, GUS</td>
-    </tr>
-  </table>
-  <div class="callout" style="margin-top:24px;">
-    <strong>Rule of thumb:</strong>
-    Keep copy-pasting the same procedure? &rarr; <strong class="accent-text">Skill</strong> &nbsp;|&nbsp;
-    Need something to <em>always</em> happen? &rarr; <strong class="green-text">Hook</strong> &nbsp;|&nbsp;
-    Need external services? &rarr; <strong class="pink-text">MCP Server</strong>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 8: Best Practices (bullets) ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Best Practices" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Guidelines</div>
-  <h2>Best Practices</h2>
-  <div class="content-full">
-    <p style="font-size:22px; margin-bottom: 28px;">
-      Seven patterns for writing effective skills.
-    </p>
-    <ul role="list">
-      <li><strong class="accent-text">Clear descriptions</strong> &mdash; Claude uses the <code>description</code> field to decide when to auto-invoke</li>
-      <li><strong class="pink-text">disable-model-invocation: true</strong> &mdash; for anything with side effects (deploys, deletions)</li>
-      <li><strong class="green-text">Keep SKILL.md under 500 lines</strong> &mdash; move reference docs to separate files and link them</li>
-      <li><strong class="yellow-text">Pre-approve tools</strong> with <code>allowed-tools</code> to reduce permission prompts</li>
-      <li><strong class="accent-text">Use arguments</strong> for reusable skills: <code>/fix-issue $0</code> where <code>$0</code> is the issue number</li>
-      <li><strong class="pink-text">Use paths</strong> to limit skills to relevant file types: <code>paths: "**/*.go"</code></li>
-      <li><strong class="green-text">Test incrementally</strong> &mdash; edits to skills take effect immediately, no restart needed</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 9: Ideas for Our Team (title) ==================== -->
-<section class="slide title-slide" role="group" aria-roledescription="slide" aria-label="Team Ideas" tabindex="-1" aria-hidden="true">
-  <div class="badge">Call to Action</div>
-  <h1 style="font-size:52px;">Ideas for Our Team</h1>
-  <p class="subtitle">/fix-gus &bull; /deploy &bull; /code-review &bull; /onboard &bull; /incident &bull; /release-notes</p>
-  <div style="display:flex;gap:10px;margin-top:12px;">
-    <span class="tag tag-new">Already Built</span>
-    <span class="tag tag-feature">Easy to Create</span>
-    <span class="tag tag-opus">Share via Git</span>
-  </div>
-  <p class="subtitle" style="margin-top:32px; font-size:20px; margin-bottom:0;">What repetitive workflow do you wish you could automate with a single command?</p>
-</section>
 
 </main>
 
