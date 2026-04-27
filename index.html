@@ -19,7 +19,7 @@ const PRESENTATION_CONFIG = {
   logo: { image: "assets/logo-trailhead.png", show: true },
   slides: [
     { name: "What Are Skills?",   layout: "title",      title: "Claude Code Skills" },
-    { name: "Where Skills Live",  layout: "comparison", title: "Where Do Skills Live?" },
+    { name: "What Are Skills?",   layout: "bullets",    title: "What Are Skills?" },
     { name: "Anatomy",            layout: "code",       title: "Anatomy of a Skill File" },
     { name: "/fix-gus",           layout: "features",   title: "The /fix-gus Skill" },
     { name: "Live Demo",          layout: "demo",       title: "Demo \u2014 Live /fix-gus" },
@@ -818,39 +818,26 @@ const PRESENTATION_CONFIG = {
   </div>
 </section>
 
-<!-- ==================== SLIDE 1: Where Do Skills Live? (comparison) ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Where Skills Live" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Foundations</div>
-  <h2>Where Do Skills Live?</h2>
-  <table class="comparison">
-    <tr>
-      <th>Scope</th>
-      <th class="col-sub">Path</th>
-      <th class="col-team">Sharing</th>
-    </tr>
-    <tr>
-      <td>Personal</td>
-      <td class="col-sub">~/.claude/skills/&lt;name&gt;/SKILL.md</td>
-      <td class="col-team">Only you, across all projects</td>
-    </tr>
-    <tr>
-      <td>Project</td>
-      <td class="col-sub">.claude/skills/&lt;name&gt;/SKILL.md</td>
-      <td class="col-team">Anyone who clones the repo</td>
-    </tr>
-    <tr>
-      <td>Plugin</td>
-      <td class="col-sub">Installed via marketplace</td>
-      <td class="col-team">Wherever plugin is enabled</td>
-    </tr>
-    <tr>
-      <td>Enterprise</td>
-      <td class="col-sub">Admin-managed settings</td>
-      <td class="col-team">Organization-wide</td>
-    </tr>
-  </table>
-  <div class="callout" style="margin-top:24px;">
-    Project-level skills committed to <strong>.claude/skills/</strong> are the easiest way to share &mdash; everyone who clones the repo gets them automatically.
+<!-- ==================== SLIDE 1: What Are Skills? (bullets) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="What Are Skills?" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Recap</div>
+  <h2>What Are Skills?</h2>
+  <div class="content-full">
+    <p style="font-size:22px; margin-bottom: 28px;">
+      Skills are <strong class="accent-text">reusable markdown instruction files</strong> that teach Claude Code
+      how to perform specific workflows. Think of them as executable playbooks &mdash;
+      you write the steps once, and Claude follows them whenever triggered.
+    </p>
+    <ul role="list">
+      <li>Stored as <strong>SKILL.md</strong> files with YAML frontmatter</li>
+      <li>Invoked manually via <strong class="pink-text">/skill-name</strong> or automatically when Claude detects a matching request</li>
+      <li>Follow the open <strong class="green-text">Agent Skills standard</strong> (agentskills.io) &mdash; portable across AI tools</li>
+      <li>Live in <strong class="yellow-text">.claude/skills/</strong> at the project, personal, or enterprise level</li>
+      <li>Edits take effect immediately &mdash; <strong class="accent-text">no restart needed</strong></li>
+    </ul>
+    <div class="callout">
+      One command turns a 30-minute workflow into seconds. Just describe what you want &mdash; Claude picks the right skill automatically.
+    </div>
   </div>
 </section>
 
