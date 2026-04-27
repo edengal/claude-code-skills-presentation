@@ -20,7 +20,6 @@ const PRESENTATION_CONFIG = {
   slides: [
     { name: "What Are Skills?",   layout: "title",      title: "Claude Code Skills" },
     { name: "What Are Skills?",   layout: "bullets",    title: "What Are Skills?" },
-    { name: "Anatomy",            layout: "code",       title: "Anatomy of a Skill File" },
     { name: "/fix-gus",           layout: "features",   title: "The /fix-gus Skill" },
     { name: "Live Demo",          layout: "demo",       title: "Demo \u2014 Live /fix-gus" },
     { name: "Create Your Own",    layout: "code",       title: "How to Create Your Own Skill" },
@@ -841,35 +840,7 @@ const PRESENTATION_CONFIG = {
   </div>
 </section>
 
-<!-- ==================== SLIDE 2: Anatomy of a Skill File (code) ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Anatomy" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Deep Dive</div>
-  <h2>Anatomy of a Skill File</h2>
-  <div class="content-full">
-    <div class="code-label" id="code-label-1">SKILL.md</div>
-    <pre class="code-block" role="region" aria-labelledby="code-label-1"><code><span class="comment">---</span>
-<span class="key">name</span>: <span class="str">my-skill</span>                        <span class="comment"># slash command name</span>
-<span class="key">description</span>: <span class="str">&gt;</span>                         <span class="comment"># when to trigger</span>
-  <span class="str">What this skill does and when to use it</span>
-<span class="key">disable-model-invocation</span>: <span class="val">false</span>        <span class="comment"># allow auto-triggering?</span>
-<span class="key">allowed-tools</span>: <span class="str">Bash(git *) Read Write</span>  <span class="comment"># pre-approve tools</span>
-<span class="key">arguments</span>: <span class="str">[issue-number]</span>             <span class="comment"># named arguments</span>
-<span class="comment">---</span>
-
-<span class="kw">## Step 1: Do something</span>
-Instructions Claude follows...
-
-<span class="kw">## Step 2: Do something else</span>
-!<span class="str">`shell commands can be injected inline`</span></code></pre>
-    <div class="callout">
-      Every skill has two parts: <strong>YAML frontmatter</strong> (name, description, tools, arguments)
-      and <strong>Markdown body</strong> (step-by-step instructions Claude follows).
-      Edits take effect immediately &mdash; no restart needed.
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 3: The /fix-gus Skill (features) ==================== -->
+<!-- ==================== SLIDE 2: The /fix-gus Skill (features) ==================== -->
 <section class="slide" role="group" aria-roledescription="slide" aria-label="/fix-gus" tabindex="-1" aria-hidden="true">
   <div class="section-num">Case Study</div>
   <h2>The /fix-gus Skill</h2>
