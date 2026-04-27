@@ -18,15 +18,16 @@ const PRESENTATION_CONFIG = {
   background: "assets/sf-bg.png",
   logo: { image: "assets/logo-trailhead.png", show: true },
   slides: [
-    { name: "Title",             layout: "title",      title: "Claude Code Skills" },
-    { name: "Agenda",            layout: "agenda",     title: "What We'll Cover" },
-    { name: "What Are Skills?",  layout: "cards",      title: "What Are Skills?" },
-    { name: "Anatomy",           layout: "code",       title: "Anatomy of a SKILL.md" },
-    { name: "10 Skills",         layout: "features",   title: "The 10 Built-in Skills" },
-    { name: "Skill Categories",  layout: "comparison", title: "Skills at a Glance" },
-    { name: "How It Works",      layout: "demo",       title: "Skills in Action" },
-    { name: "Best Practices",    layout: "bullets",    title: "Best Practices" },
-    { name: "Get Started",       layout: "title",      title: "Get Started" },
+    { name: "What Are Skills?",   layout: "title",      title: "Claude Code Skills" },
+    { name: "Where Skills Live",  layout: "comparison", title: "Where Do Skills Live?" },
+    { name: "Anatomy",            layout: "code",       title: "Anatomy of a Skill File" },
+    { name: "/fix-gus",           layout: "features",   title: "The /fix-gus Skill" },
+    { name: "Live Demo",          layout: "demo",       title: "Demo \u2014 Live /fix-gus" },
+    { name: "Create Your Own",    layout: "code",       title: "How to Create Your Own Skill" },
+    { name: "Sharing",            layout: "cards",      title: "Sharing With Your Team" },
+    { name: "Skills vs Hooks",    layout: "comparison", title: "Skills vs Hooks vs MCP Servers" },
+    { name: "Best Practices",     layout: "bullets",    title: "Best Practices" },
+    { name: "Team Ideas",         layout: "title",      title: "Ideas for Our Team" },
   ],
   autoPlay: { enabled: false, interval: 8000 },
   slideCounter: { show: true, format: "numbered" },
@@ -805,237 +806,287 @@ const PRESENTATION_CONFIG = {
 
 <main aria-roledescription="presentation" aria-label="Slide deck">
 
-<!-- ==================== SLIDE 0: Title ==================== -->
-<section class="slide active title-slide" role="group" aria-roledescription="slide" aria-label="Title" tabindex="-1">
-  <div class="badge">Claude Code &middot; Skills Framework</div>
+<!-- ==================== SLIDE 0: What Are Skills? (title) ==================== -->
+<section class="slide active title-slide" role="group" aria-roledescription="slide" aria-label="What Are Skills?" tabindex="-1">
+  <div class="badge">Claude Code &middot; The /fix-gus Example</div>
   <h1 style="margin-top:24px;">Claude Code Skills</h1>
-  <p class="subtitle">Build agent-powered presentations with natural language &mdash; no manual HTML required</p>
+  <p class="subtitle">Reusable markdown instruction files that teach Claude how to perform specific workflows</p>
   <div style="display:flex;gap:10px;margin-top:8px;">
-    <span class="tag tag-new">10 Skills</span>
-    <span class="tag tag-opus">SKILL.md</span>
-    <span class="tag tag-feature">Single File</span>
+    <span class="tag tag-new">SKILL.md</span>
+    <span class="tag tag-opus">Agent Skills Standard</span>
+    <span class="tag tag-feature">/fix-gus</span>
   </div>
 </section>
 
-<!-- ==================== SLIDE 1: Agenda ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Agenda" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Overview</div>
-  <h2>What We'll Cover</h2>
-  <div class="content-full">
-    <p style="font-size:18px; margin-bottom:20px; color:var(--text-muted);">
-      A complete tour of the presentation-template skills system &mdash; from concept to deployment.
-    </p>
-    <ul role="list" style="font-size:24px;">
-      <li><strong class="accent-text">1.</strong> &nbsp;What are skills and why they matter</li>
-      <li><strong class="pink-text">2.</strong> &nbsp;Anatomy of a SKILL.md file</li>
-      <li><strong class="green-text">3.</strong> &nbsp;The 10 built-in skills</li>
-      <li><strong class="yellow-text">4.</strong> &nbsp;Skills at a glance &mdash; comparison table</li>
-      <li><strong class="accent-text">5.</strong> &nbsp;Live demo &mdash; skills in action</li>
-      <li><strong class="pink-text">6.</strong> &nbsp;Best practices &amp; getting started</li>
-    </ul>
+<!-- ==================== SLIDE 1: Where Do Skills Live? (comparison) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="Where Skills Live" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Foundations</div>
+  <h2>Where Do Skills Live?</h2>
+  <table class="comparison">
+    <tr>
+      <th>Scope</th>
+      <th class="col-sub">Path</th>
+      <th class="col-team">Sharing</th>
+    </tr>
+    <tr>
+      <td>Personal</td>
+      <td class="col-sub">~/.claude/skills/&lt;name&gt;/SKILL.md</td>
+      <td class="col-team">Only you, across all projects</td>
+    </tr>
+    <tr>
+      <td>Project</td>
+      <td class="col-sub">.claude/skills/&lt;name&gt;/SKILL.md</td>
+      <td class="col-team">Anyone who clones the repo</td>
+    </tr>
+    <tr>
+      <td>Plugin</td>
+      <td class="col-sub">Installed via marketplace</td>
+      <td class="col-team">Wherever plugin is enabled</td>
+    </tr>
+    <tr>
+      <td>Enterprise</td>
+      <td class="col-sub">Admin-managed settings</td>
+      <td class="col-team">Organization-wide</td>
+    </tr>
+  </table>
+  <div class="callout" style="margin-top:24px;">
+    Project-level skills committed to <strong>.claude/skills/</strong> are the easiest way to share &mdash; everyone who clones the repo gets them automatically.
   </div>
 </section>
 
-<!-- ==================== SLIDE 2: What Are Skills? ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="What Are Skills?" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Concepts</div>
-  <h2>What Are Skills?</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3 class="accent-text">The Problem</h3>
-      <ul role="list">
-        <li>Hand-editing HTML is tedious and error-prone</li>
-        <li>Agents need structured guidance to edit correctly</li>
-        <li>Config and HTML must stay in sync</li>
-        <li>Each feature area has unique rules</li>
-      </ul>
-    </div>
-    <div class="card highlight">
-      <h3 class="green-text">The Solution: Skills</h3>
-      <ul role="list">
-        <li>Markdown files that teach the agent <strong>how</strong> to edit</li>
-        <li>One skill per feature area (theme, slides, logo&hellip;)</li>
-        <li>Include gotchas, templates, and verification steps</li>
-        <li>Just talk naturally &mdash; the agent picks the right skill</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== SLIDE 3: Anatomy of a SKILL.md ==================== -->
+<!-- ==================== SLIDE 2: Anatomy of a Skill File (code) ==================== -->
 <section class="slide" role="group" aria-roledescription="slide" aria-label="Anatomy" tabindex="-1" aria-hidden="true">
   <div class="section-num">Deep Dive</div>
-  <h2>Anatomy of a SKILL.md</h2>
+  <h2>Anatomy of a Skill File</h2>
   <div class="content-full">
-    <div class="code-label" id="code-label-1">.claude/skills/change-theme/SKILL.md</div>
+    <div class="code-label" id="code-label-1">SKILL.md</div>
     <pre class="code-block" role="region" aria-labelledby="code-label-1"><code><span class="comment">---</span>
-<span class="key">name</span>: <span class="str">change-theme</span>
-<span class="key">description</span>: <span class="str">&gt;-</span>
-  <span class="str">Change the color theme or palette of a presentation.</span>
-  <span class="str">Use when the user asks to change colors, apply a theme,</span>
-  <span class="str">make it purple, or adjust any visual color scheme.</span>
+<span class="key">name</span>: <span class="str">my-skill</span>                        <span class="comment"># slash command name</span>
+<span class="key">description</span>: <span class="str">&gt;</span>                         <span class="comment"># when to trigger</span>
+  <span class="str">What this skill does and when to use it</span>
+<span class="key">disable-model-invocation</span>: <span class="val">false</span>        <span class="comment"># allow auto-triggering?</span>
+<span class="key">allowed-tools</span>: <span class="str">Bash(git *) Read Write</span>  <span class="comment"># pre-approve tools</span>
+<span class="key">arguments</span>: <span class="str">[issue-number]</span>             <span class="comment"># named arguments</span>
 <span class="comment">---</span>
 
-<span class="comment"># Change Theme</span>
+<span class="kw">## Step 1: Do something</span>
+Instructions Claude follows...
 
-<span class="comment">## Ask the user</span>
-<span class="val">1.</span> Preset or custom?
-<span class="val">2.</span> If custom, which colors?
-
-<span class="comment">## How to apply</span>
-Replace the <span class="key">theme</span> object in <span class="kw">PRESENTATION_CONFIG</span>
-
-<span class="comment">## Gotchas</span>
-- <span class="key">bg</span> must be dark
-- <span class="key">surface</span> must use rgba at ~<span class="val">0.85</span> opacity</code></pre>
+<span class="kw">## Step 2: Do something else</span>
+!<span class="str">`shell commands can be injected inline`</span></code></pre>
     <div class="callout">
-      Every skill follows this structure: <strong>frontmatter</strong> (name + trigger description),
-      <strong>Ask the user</strong> (clarifying questions),
-      <strong>How to apply</strong> (step-by-step edits),
-      <strong>Gotchas</strong> (common mistakes),
-      and <strong>Verification</strong> (post-edit checklist).
+      Every skill has two parts: <strong>YAML frontmatter</strong> (name, description, tools, arguments)
+      and <strong>Markdown body</strong> (step-by-step instructions Claude follows).
+      Edits take effect immediately &mdash; no restart needed.
     </div>
   </div>
 </section>
 
-<!-- ==================== SLIDE 4: The 10 Built-in Skills ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="10 Skills" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Skills Catalog</div>
-  <h2>The 10 Built-in Skills</h2>
+<!-- ==================== SLIDE 3: The /fix-gus Skill (features) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="/fix-gus" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Case Study</div>
+  <h2>The /fix-gus Skill</h2>
   <div class="feature-list">
     <div class="feature-item">
       <div class="feature-icon" style="background:rgba(27,150,255,0.2);">
-        <span class="accent-text">+</span>
+        <span class="accent-text">1</span>
       </div>
       <div>
-        <h4>add-slide</h4>
-        <p>Insert new slides with any of the 10 layout types. Updates both config and HTML.</p>
+        <h4>Parse Input</h4>
+        <p>Extracts W-number from a GUS Lightning URL, W-number, or raw record ID.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:rgba(255,83,138,0.2);">
-        <span class="pink-text">&oplus;</span>
+        <span class="pink-text">2</span>
       </div>
       <div>
-        <h4>add-component</h4>
-        <p>Drop cards, code blocks, callouts, tables, or terminals into existing slides.</p>
+        <h4>Fetch GUS Details</h4>
+        <p>Queries GUS for subject, details, priority, and status. Presents summary for confirmation.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:rgba(69,198,90,0.2);">
-        <span class="green-text">&curren;</span>
+        <span class="green-text">3</span>
       </div>
       <div>
-        <h4>change-theme</h4>
-        <p>Apply one of 7 presets or define a custom palette. Updates CSS variables at runtime.</p>
+        <h4>Implement &amp; Build</h4>
+        <p>Creates branch @W-XXXXXXXX-slug, codes the fix, runs <code>mvn clean install</code>.</p>
       </div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:rgba(254,147,57,0.2);">
-        <span class="yellow-text">&starf;</span>
+        <span class="yellow-text">4</span>
       </div>
       <div>
-        <h4>manage-characters</h4>
-        <p>Add, remove, or reposition the floating Astro mascots around the slide panel.</p>
+        <h4>PR &amp; Update GUS</h4>
+        <p>Commits with @W-XXXXXXXX prefix, opens PR via git-soma, optionally updates GUS status.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== SLIDE 5: Skills at a Glance ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="Skill Categories" tabindex="-1" aria-hidden="true">
-  <div class="section-num">Reference</div>
-  <h2>Skills at a Glance</h2>
-  <table class="comparison">
-    <tr>
-      <th>Skill</th>
-      <th class="col-sub">Config Section</th>
-      <th class="col-team">Example Prompt</th>
-    </tr>
-    <tr>
-      <td>add-slide</td>
-      <td class="col-sub">slides[]</td>
-      <td class="col-team">"Add a features slide after slide 2"</td>
-    </tr>
-    <tr>
-      <td>edit-slide</td>
-      <td class="col-sub">slides[].title</td>
-      <td class="col-team">"Update the title on slide 1"</td>
-    </tr>
-    <tr>
-      <td>change-theme</td>
-      <td class="col-sub">theme</td>
-      <td class="col-team">"Make it purple"</td>
-    </tr>
-    <tr>
-      <td>set-background</td>
-      <td class="col-sub">background</td>
-      <td class="col-team">"Use sf-bg.png as the background"</td>
-    </tr>
-    <tr>
-      <td>configure-logo</td>
-      <td class="col-sub">logo</td>
-      <td class="col-team">"Use the trailhead logo"</td>
-    </tr>
-  </table>
-</section>
-
-<!-- ==================== SLIDE 6: Skills in Action (Demo) ==================== -->
-<section class="slide" role="group" aria-roledescription="slide" aria-label="How It Works" tabindex="-1" aria-hidden="true">
+<!-- ==================== SLIDE 4: Demo (demo) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="Live Demo" tabindex="-1" aria-hidden="true">
   <div class="section-num">Live Demo</div>
-  <h2>Skills in Action</h2>
+  <h2>Demo &mdash; Live /fix-gus</h2>
   <div class="demo-placeholder">
     <div class="demo-terminal">
-<span class="prompt">user&gt;</span> Add a code slide about our API config after slide 3
+<span class="prompt">$</span> claude
 
-<span class="output">  Reading SKILL.md &rarr; add-slide</span>
-<span class="output">  Layout: code | Position: after slide 3</span>
-<span class="output">  Updating PRESENTATION_CONFIG.slides[]...</span>
-<span class="output">  Inserting &lt;section&gt; HTML at position 4...</span>
+<span class="prompt">user&gt;</span> /fix-gus <span class="flag">W-21408978</span>
 
-<span class="prompt">&check;</span> <span class="flag">Slide 4 &ldquo;API Config&rdquo;</span> added successfully
-<span class="prompt">&check;</span> Slide counter updated: <span class="flag">9 slides</span>
+<span class="output">  Parsing input&hellip; W-number: W-21408978</span>
+<span class="output">  Fetching GUS work item&hellip;</span>
+<span class="output">  Subject: "NullPointerException in BatchProcessor"</span>
+<span class="output">  Priority: P1 | Status: New</span>
 
-<span class="prompt">user&gt;</span> Make it purple
+<span class="prompt">&check;</span> Creating branch <span class="flag">@W-21408978-fix-batch-npe</span>
+<span class="output">  Implementing fix&hellip;</span>
+<span class="output">  Running mvn clean install&hellip; BUILD SUCCESS</span>
 
-<span class="output">  Reading SKILL.md &rarr; change-theme</span>
-<span class="output">  Applying Deep Purple preset...</span>
-
-<span class="prompt">&check;</span> Theme updated &mdash; reload to see changes</div>
+<span class="prompt">&check;</span> PR opened: <span class="flag">"@W-21408978 Fix NPE in BatchProcessor"</span>
+<span class="prompt">&check;</span> GUS status updated to <span class="flag">In Progress</span></div>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    What used to be a 30-minute context-switching cycle &mdash; read the bug, understand the code, write the fix, format the PR &mdash; is now a single command.
   </div>
 </section>
 
-<!-- ==================== SLIDE 7: Best Practices ==================== -->
+<!-- ==================== SLIDE 5: How to Create Your Own Skill (code) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="Create Your Own" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Build</div>
+  <h2>How to Create Your Own Skill</h2>
+  <div class="content-full">
+    <div class="code-label" id="code-label-2">Terminal</div>
+    <pre class="code-block" role="region" aria-labelledby="code-label-2"><code><span class="comment"># Step 1: Create the directory</span>
+<span class="kw">mkdir</span> <span class="flag">-p</span> .claude/skills/my-workflow
+
+<span class="comment"># Step 2: Write the SKILL.md</span>
+<span class="kw">cat</span> <span class="str">&lt;&lt;'EOF'</span> &gt; .claude/skills/my-workflow/SKILL.md
+<span class="comment">---</span>
+<span class="key">name</span>: <span class="str">my-workflow</span>
+<span class="key">description</span>: <span class="str">&gt;</span>
+  <span class="str">Describe when this should trigger so Claude</span>
+  <span class="str">knows when to auto-invoke it.</span>
+<span class="comment">---</span>
+
+<span class="kw">## Step 1: Gather context</span>
+Read the relevant files...
+
+<span class="kw">## Step 2: Make changes</span>
+Apply the pattern...
+
+<span class="kw">## Step 3: Verify</span>
+Run tests with !<span class="str">`npm test`</span>
+<span class="str">EOF</span>
+
+<span class="comment"># Step 3: Commit to share with team</span>
+<span class="kw">git</span> add .claude/skills/
+<span class="kw">git</span> commit <span class="flag">-m</span> <span class="str">"Add my-workflow skill"</span></code></pre>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 6: Sharing With Your Team (cards) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="Sharing" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Distribute</div>
+  <h2>Sharing With Your Team</h2>
+  <div class="content-grid">
+    <div class="card highlight">
+      <h3 class="accent-text">Project Skills (Recommended)</h3>
+      <ul role="list">
+        <li>Commit <strong>.claude/skills/</strong> to your repo</li>
+        <li>Every team member gets them on clone/pull</li>
+        <li>Version-controlled alongside the code</li>
+        <li>Review skills in PRs like any other code</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="yellow-text">Other Options</h3>
+      <ul role="list">
+        <li><strong class="pink-text">Personal:</strong> ~/.claude/skills/ for cross-project use</li>
+        <li><strong class="green-text">Enterprise:</strong> Admins push org-wide via managed settings</li>
+        <li><strong class="accent-text">Precedence:</strong> Enterprise &rarr; Personal &rarr; Project &rarr; Plugin</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 7: Skills vs Hooks vs MCP Servers (comparison) ==================== -->
+<section class="slide" role="group" aria-roledescription="slide" aria-label="Skills vs Hooks" tabindex="-1" aria-hidden="true">
+  <div class="section-num">Compare</div>
+  <h2>Skills vs Hooks vs MCP Servers</h2>
+  <table class="comparison">
+    <tr>
+      <th></th>
+      <th class="col-sub">Skills</th>
+      <th class="col-team">Hooks</th>
+      <th>MCP Servers</th>
+    </tr>
+    <tr>
+      <td>What</td>
+      <td class="col-sub">Markdown playbooks</td>
+      <td class="col-team">Shell scripts on events</td>
+      <td>External tool APIs</td>
+    </tr>
+    <tr>
+      <td>Trigger</td>
+      <td class="col-sub">/command or auto</td>
+      <td class="col-team">Lifecycle events</td>
+      <td>Claude's decision</td>
+    </tr>
+    <tr>
+      <td>Control</td>
+      <td class="col-sub">Claude follows instructions</td>
+      <td class="col-team">Deterministic, always runs</td>
+      <td>Claude calls as needed</td>
+    </tr>
+    <tr>
+      <td>Use case</td>
+      <td class="col-sub">Multi-step workflows</td>
+      <td class="col-team">Format-on-save, validation</td>
+      <td>Slack, GitHub, GUS</td>
+    </tr>
+  </table>
+  <div class="callout" style="margin-top:24px;">
+    <strong>Rule of thumb:</strong>
+    Keep copy-pasting the same procedure? &rarr; <strong class="accent-text">Skill</strong> &nbsp;|&nbsp;
+    Need something to <em>always</em> happen? &rarr; <strong class="green-text">Hook</strong> &nbsp;|&nbsp;
+    Need external services? &rarr; <strong class="pink-text">MCP Server</strong>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 8: Best Practices (bullets) ==================== -->
 <section class="slide" role="group" aria-roledescription="slide" aria-label="Best Practices" tabindex="-1" aria-hidden="true">
   <div class="section-num">Guidelines</div>
   <h2>Best Practices</h2>
   <div class="content-full">
     <p style="font-size:22px; margin-bottom: 28px;">
-      Follow these patterns to get the most out of the skills framework.
+      Seven patterns for writing effective skills.
     </p>
     <ul role="list">
-      <li><strong class="accent-text">Single source of truth</strong> &mdash; all visual settings live in <strong>PRESENTATION_CONFIG</strong>. Never hard-code styles inline.</li>
-      <li><strong class="pink-text">Two-place edits</strong> &mdash; when adding slides, always update both the config <strong>slides[]</strong> array and the <strong>&lt;section&gt;</strong> HTML.</li>
-      <li><strong class="green-text">Use reference files</strong> &mdash; <strong>slide-templates.md</strong>, <strong>theme-presets.md</strong>, and <strong>default-config.js</strong> live in <code>assets/</code>.</li>
-      <li><strong class="yellow-text">Verify after editing</strong> &mdash; every skill includes a post-edit checklist. Reload the browser and run through it.</li>
-      <li><strong class="accent-text">Natural language first</strong> &mdash; describe what you want. The agent matches your intent to the right skill automatically.</li>
+      <li><strong class="accent-text">Clear descriptions</strong> &mdash; Claude uses the <code>description</code> field to decide when to auto-invoke</li>
+      <li><strong class="pink-text">disable-model-invocation: true</strong> &mdash; for anything with side effects (deploys, deletions)</li>
+      <li><strong class="green-text">Keep SKILL.md under 500 lines</strong> &mdash; move reference docs to separate files and link them</li>
+      <li><strong class="yellow-text">Pre-approve tools</strong> with <code>allowed-tools</code> to reduce permission prompts</li>
+      <li><strong class="accent-text">Use arguments</strong> for reusable skills: <code>/fix-issue $0</code> where <code>$0</code> is the issue number</li>
+      <li><strong class="pink-text">Use paths</strong> to limit skills to relevant file types: <code>paths: "**/*.go"</code></li>
+      <li><strong class="green-text">Test incrementally</strong> &mdash; edits to skills take effect immediately, no restart needed</li>
     </ul>
-    <div class="callout">
-      Skills are plain Markdown &mdash; you can extend them, add new ones, or customize the trigger descriptions to match your team's vocabulary.
-    </div>
   </div>
 </section>
 
-<!-- ==================== SLIDE 8: Get Started ==================== -->
-<section class="slide title-slide" role="group" aria-roledescription="slide" aria-label="Get Started" tabindex="-1" aria-hidden="true">
-  <div class="badge">Ready to Build</div>
-  <h1 style="font-size:56px;">Get Started</h1>
-  <p class="subtitle">Copy the template &bull; Open in Claude Code &bull; Start talking</p>
-  <div style="display:flex;gap:10px;margin-top:8px;">
-    <span class="tag tag-new">10 Layouts</span>
-    <span class="tag tag-feature">7 Themes</span>
-    <span class="tag tag-opus">Zero Build Step</span>
+<!-- ==================== SLIDE 9: Ideas for Our Team (title) ==================== -->
+<section class="slide title-slide" role="group" aria-roledescription="slide" aria-label="Team Ideas" tabindex="-1" aria-hidden="true">
+  <div class="badge">Call to Action</div>
+  <h1 style="font-size:52px;">Ideas for Our Team</h1>
+  <p class="subtitle">/fix-gus &bull; /deploy &bull; /code-review &bull; /onboard &bull; /incident &bull; /release-notes</p>
+  <div style="display:flex;gap:10px;margin-top:12px;">
+    <span class="tag tag-new">Already Built</span>
+    <span class="tag tag-feature">Easy to Create</span>
+    <span class="tag tag-opus">Share via Git</span>
   </div>
+  <p class="subtitle" style="margin-top:32px; font-size:20px; margin-bottom:0;">What repetitive workflow do you wish you could automate with a single command?</p>
 </section>
 
 </main>
